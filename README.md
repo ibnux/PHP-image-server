@@ -30,7 +30,7 @@ for authorization using JWT use **x-access-token** header and need parameter Use
     --form 'photo=@/Users/ibnux/Pictures/photo6199512548924041707.jpg'
 Success
     
-    {"status":"sukses","data":"i\/1\/1.jpg"}
+    {"status":"success","data":"i\/1\/1.jpg"}
 Failed
 
     {"status":"failed","message":"Nothing to upload"}
