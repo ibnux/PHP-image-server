@@ -1,0 +1,6 @@
+vendor
+i/**
+r/**
+!i/.htaccess
+!r/.htaccess
+config.php
