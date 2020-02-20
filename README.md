@@ -65,14 +65,16 @@ PHP Code
 
     <?php
     if(!$_FILES['photo']['error']){
-
+        // change to your server
         $request = curl_init('http://images.ibnux.org/');
 
         // send a file
         curl_setopt($request, CURLOPT_POST, true);
+
+        //JWT access token set in here
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: multipart/form-data',
-            'x-access-token: 143444,12'
+            'x-access-token: '.$_SERVER['HTTP_X_ACCESS_TOKEN']
         ));
 
         curl_setopt(
@@ -83,11 +85,11 @@ PHP Code
         ));
 
         curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
-        //langsung tampilkan hasilnya
+        //echo result
         echo curl_exec($request);
 
         curl_close($request);
-        //hapus file temp
+        //delete file temp
         if(file_exists($_FILES['photo']['tmp_name']))unlink($_FILES['photo']['tmp_name']);
     }
 
