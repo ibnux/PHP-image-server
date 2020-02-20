@@ -72,7 +72,7 @@ PHP Code
         curl_setopt($request, CURLOPT_POST, true);
 
         //JWT access token set in here
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        curl_setopt($request, CURLOPT_HTTPHEADER, array(
             'Content-Type: multipart/form-data',
             'x-access-token: '.$_SERVER['HTTP_X_ACCESS_TOKEN']
         ));
