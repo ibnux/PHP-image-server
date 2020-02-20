@@ -60,6 +60,37 @@ result
 
     http://images.ibnux.org/r/512/512/1/i/1/1.jpg
 
+PHP Code
+
+
+    <?php
+    if(!$_FILES['photo']['error']){
+
+        $request = curl_init('http://images.ibnux.org/');
+
+        // send a file
+        curl_setopt($request, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: multipart/form-data',
+            'x-access-token: 143444,12'
+        ));
+
+        curl_setopt(
+            $request,
+            CURLOPT_POSTFIELDS,
+            array(
+            'photo' => '@' . realpath($_FILES['photo']['tmp_name'])
+        ));
+
+        curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
+        //langsung tampilkan hasilnya
+        echo curl_exec($request);
+
+        curl_close($request);
+        //hapus file temp
+        if(file_exists($_FILES['photo']['tmp_name']))unlink($_FILES['photo']['tmp_name']);
+    }
+
 # LICENSE
 ## Apache License 2.0
 
